@@ -1,0 +1,16 @@
+This script makes it easy to run Drupal's cron on a site via Jenkins. The main
+reason that I prefer to do this over Jenkins is it makes it very easy to see if
+a cron run failed at a glance. Additionally, drush allows you to see much more
+information about what made a cron run fail rather than getting a 500 error.
+
+USAGE:
+
+Create a new job in Jenkins, and add the following to the Execute Shell section
+
+  sh /usr/local/bin/drush_cron/drush_cron.sh your.server.com example.com
+
+Change /usr/local/bin to point to where you choose to place this script.
+If you change the location, be sure to update the script so that it can find
+the fabfile. "your.server.com" is the host that you want to run the script
+on (i.e. your Aegir server), and "example.com" is the site where you want to
+run cron. Make sure that it matches the drush alias for your site.
